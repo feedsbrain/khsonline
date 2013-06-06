@@ -72,8 +72,10 @@
     width: 50%;
 }
 
-.transkrip-tabel {
+.transkrip-tabel, .penilaian-tabel {
     width: 100%;       
 }
 
-
+.editField {
+    width: 50px;
+}

@@ -3,15 +3,14 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of MY_Model
- *
- * @author Indra
+ * MY_Model
+ * This is default Model for KHS Online application
+ * 
+ * File: MY_Model.php
+ * 
+ * @package application/core
+ * @author Indra <indra@indragunawan.com>
  */
 class MY_Model extends CI_Model {
 

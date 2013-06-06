@@ -3,15 +3,14 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * This is default controller class for KHS Application
- *
- * @author Indra
+ * MY_Controller
+ * This is default Controller for KHS Online application
+ * 
+ * File: MY_Controller.php
+ * 
+ * @package application/core
+ * @author Indra <indra@indragunawan.com>
  */
 class MY_Controller extends CI_Controller {
 
@@ -22,6 +21,7 @@ class MY_Controller extends CI_Controller {
     protected $_side_module = 'backoffice';
     protected $_user_level = 'A';
     protected $_active_view = 'index';
+    protected $_valid_access = array('A', 'M', 'D');
     protected $_messages;
 
     public function __construct() {
@@ -44,8 +44,17 @@ class MY_Controller extends CI_Controller {
     protected function _page_output($output = null) {
         if ($this->session->userdata('logged_in')) {
             $session_data = $this->session->userdata('logged_in');
+            $level = $session_data['level'];
             $output->username = $session_data['name'];
             $this->_user_level = $session_data['level'];
+            if (!in_array($session_data['level'], $this->_valid_access)) {
+                //If no permission               
+                if ($level === 'A' || $level === 'D') {
+                    redirect('backoffice', 'refresh');
+                } else {
+                    redirect('main', 'refresh');
+                }
+            }
         } else {
             //If no session, redirect to login page
             redirect('login', 'refresh');
@@ -87,7 +96,7 @@ class MY_Controller extends CI_Controller {
         $bobot = nilai_bobot($value);
         return $this->valueToCenter($bobot, $row);
     }
-    
+
     public function valueBobotToMutu($value, $row) {
         $mutu = bobot_mutu($value);
         return $this->valueToCenter($mutu, $row);
@@ -98,7 +107,11 @@ class MY_Controller extends CI_Controller {
     }
 
     public function valueToSks($value, $row) {
-        return $this->valueToCenter($value . ' SKS', $row);
+        return $this->valueToCenter($this->valueToSksDisplay($value), $row);
+    }
+    
+    public function valueToSksDisplay($value) {
+        return $value . ' SKS';
     }
 
     public function valueToSemester($value, $row) {
@@ -132,7 +145,7 @@ class MY_Controller extends CI_Controller {
             return '';
         }
     }
-    
+
     public function valueDateTimeDisplay($value, $row) {
         if ($value) {
             return $this->valueToCenter(date("d/m/Y H:i", strtotime($value)), $row);
@@ -189,6 +202,10 @@ class MY_Controller extends CI_Controller {
     public function valueToTahunAjaranDisplay($value) {
         $tahun_ajaran = $value . ' - ' . ($value + 1);
         return $tahun_ajaran;
+    }
+    
+    public function set_valid_access($access) {
+        $this->_valid_access = $access;
     }
 
     public function set_active_module($main_module, $side_module) {

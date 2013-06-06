@@ -3,15 +3,13 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of transkrip
- *
- * @author Indra
+ * Transkrip Controller
+ * 
+ * File: transkrip.php
+ * 
+ * @package application/controllers
+ * @author Indra <indra@indragunawan.com>
  */
 class Transkrip extends MY_Controller {
 

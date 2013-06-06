@@ -4,7 +4,7 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 $config['main_menu_main'] = array(
-    'main_home' => array('main/', array('M')),
+    'beranda' => array('main/', array('M')),
     'manajemen' => array('backoffice/manajemen/', array('A', 'D', 'M')),
     'konfigurasi' => array('backoffice/konfigurasi/', array('A', 'D', 'M'))
 );
@@ -15,8 +15,8 @@ $config['side_menu_main'] = array(
 );
 
 $config['main_menu_backoffice'] = array(
-    'main_home' => array('main/', array('M')),
-    'home' => array('backoffice/', array('A', 'D')),
+    'beranda' => array('main/', array('M')),
+    'back_office' => array('backoffice/', array('A', 'D')),
     'manajemen' => array('backoffice/manajemen/', array('A', 'D', 'M')),
     'konfigurasi' => array('backoffice/konfigurasi/', array('A', 'D', 'M'))
 );
@@ -34,7 +34,9 @@ $config['side_menu_manajemen'] = array(
     'mahasiswa' => array('mahasiswa/', array('A', 'D')),
     'spp' => array('spp/', array('A')),
     'kartu_studi' => array('krs/', array('A', 'D', 'M')),
-    'transkrip' => array('transkrip/', array('A','M'))
+    'penilaian' => array('penilaian/', array('A', 'D')),
+    'transkrip' => array('transkrip/', array('A', 'M')),
+    'history' => array('pembayaran/history/', array('A', 'M')),
 );
 
 $config['side_menu_konfigurasi'] = array(

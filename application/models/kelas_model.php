@@ -3,15 +3,13 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of kelas_model
- *
- * @author Indra
+ * Kelas Model
+ * 
+ * File: kelas_model.php
+ * 
+ * @package application/models
+ * @author Indra <indra@indragunawan.com>
  */
 class Kelas_model extends MY_Model {
 

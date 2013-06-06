@@ -3,15 +3,13 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of users_model
- *
- * @author Indra
+ * Users Model
+ * 
+ * File: users_model.php
+ * 
+ * @package application/models
+ * @author Indra <indra@indragunawan.com>
  */
 class Users_model extends MY_Model {
 

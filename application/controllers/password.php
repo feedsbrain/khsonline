@@ -3,15 +3,13 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of password
- *
- * @author Indra
+ * Password Controller
+ * 
+ * File: password.php
+ * 
+ * @package application/controllers
+ * @author Indra <indra@indragunawan.com>
  */
 class Password extends MY_Controller {
 

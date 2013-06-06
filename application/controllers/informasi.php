@@ -3,15 +3,13 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of informasi
- *
- * @author Indra
+ * Informasi Controller
+ * 
+ * File: informasi.php
+ * 
+ * @package application/controllers
+ * @author Indra <indra@indragunawan.com>
  */
 class Informasi extends MY_Controller {
 

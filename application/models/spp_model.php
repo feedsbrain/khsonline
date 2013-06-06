@@ -3,15 +3,13 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of spp_model
- *
- * @author Indra
+ * Spp Model
+ * 
+ * File: spp_model.php
+ * 
+ * @package application/models
+ * @author Indra <indra@indragunawan.com>
  */
 class Spp_model extends MY_Model {
 

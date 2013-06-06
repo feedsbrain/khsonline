@@ -3,21 +3,20 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of mahasiswa
- *
- * @author Indra
+ * Mahasiswa Controller
+ * 
+ * File: mahasiswa.php
+ * 
+ * @package application/controllers
+ * @author Indra <indra@indragunawan.com>
  */
 class Mahasiswa extends MY_Controller {
 
     protected $_title = 'Manajemen Mahasiswa';
     protected $_page_name = 'Mahasiswa';
     protected $_default_status = 'AKTIF';
+    protected $_valid_access = array('A', 'D');
 
     function __construct() {
         // Call the Controller constructor

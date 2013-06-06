@@ -38,8 +38,14 @@
         <dt><a href="<?php echo base_url() . 'krs/' ?>"><strong>Kartu Studi</strong></a></dt>
         <dd>Bagi Mahasiswa, menu ini merupakan sarana untuk menyusun Kartu Rencana Studi (KRS) sebelum ditetapkan. Kemudian jika
             Mahasiswa sudah melakukan Penetapan terhadap Kartu Studi tersebut, maka status Kartu Studi akan berubah menjadi Kartu Hasil Studi (KHS). Bagi Dosen, menu ini merupakan 
-            sarana untuk memasukan Nilai jika KRS sudah ditetapkan. Dosen memiliki akses terhadap seluruh Mahasiswa. Dalam akses Dosen, Nilai yang ditampilkan merupakan nilai
-            asli (contoh: 80), sedangkan dalam akses Mahasiswa, Nilai ditampilkan dalam bentuk bobot (contoh: A).</dd>
+            sarana untuk memasukan Nilai jika KRS sudah ditetapkan. Dosen memiliki akses terhadap seluruh Mahasiswa.</dd>
+        <?php if ($level === 'A' || $level === 'D') { ?>   
+            <dt><a href="<?php echo base_url() . 'penilaian/' ?>"><strong>Penilaian</strong></a></dt>
+            <dd>Menu ini merupakan jalan pintas bagi Dosen atau Administrator untuk memberikan Penilaian (pengisian KHS) Mahasiswa. Dengan memasukan parameter Tahun Ajaran, Semester
+                dan Mata Kuliah yang dimaksud, maka akan ditampilkan seluruh Mahasiswa yang mengambil mata kuliah tersebut untuk tahun dan semester yang dipilih. Lakukan "Double Klik" pada 
+                kolom yang nilainya akan diubah. Jika indikator berwarna merah, artinya isian yang anda masukan tidak tepat dan perubahan tidak akan disimpan ke database. Sebaliknya jika 
+                indikator berwarna hijau setelah nilai anda simpan, artinya perubahan telah berhasil disimpan ke database.</dd>
+        <?php } ?>
         <?php if ($level === 'A') { ?>   
             <dt><a href="<?php echo base_url() . 'transkrip/' ?>"><strong>Transkrip</strong></a></dt>
             <dd>Menu ini digunakan untuk membuat header Transkrip Mahasiswa seperti No. Seri, No. Registrasi Ijazah dan sebagainya. Satu Mahasiswa hanya memiliki satu data transkrip, 
@@ -51,6 +57,11 @@
             <dd>Menu ini digunakan untuk melihat Transkrip Nilai Mahasiswa. Nilai yang tampil disini merupakan nilai seluruh mata kuliah yang sudah diambil oleh mahasiswa yang bersangkutan. 
                 Jika mahasiswa yang bersangkutan mengulang satu atau beberapa mata kuliah, maka nilai yang diambil adalah nilai yang tertinggi dari mata kuliah yang diulang tersebut. 
                 Untuk melihat transkrip, pilih icon <strong>Lihat Transkrip</strong>.</dd>
+        <?php } ?>
+        <?php if ($level === 'A' || $level === 'M') { ?>   
+            <dt><a href="<?php echo base_url() . 'pembayaran/history' ?>"><strong>History</strong></a></dt>
+            <dd>Menu ini digunakan untuk melihat daftar Pembayaran SPP Mahasiswa yang sudah diinput. Mahasiswa hanya dapat melihat history pembayaran miliknya sendiri, sedangkan 
+                Bagian Administrasi kampus dapat melihat seluruh daftar pembayaran yang sudah masuk.</dd>
         <?php } ?>
     </dl>
 </div>

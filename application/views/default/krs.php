@@ -51,6 +51,11 @@
                             <td><strong>&nbsp;:&nbsp;</strong></td>
                             <td><?php if (!empty($ips)) echo $ips; ?></td>
                         </tr>
+                        <tr>
+                            <td><strong>IPK Sementara</strong></td>
+                            <td><strong>&nbsp;:&nbsp;</strong></td>
+                            <td><?php if (!empty($ipk_sementara)) echo $ipk_sementara; ?></td>
+                        </tr>
                     <?php } ?>
                 </tbody>
             </table>
@@ -65,6 +70,32 @@
                 </a>
             </div>
             <div class="right-container">
+                <?php if ($krs_posted) { ?>
+                    <a class="high" href="<?php echo base_url() . 'doc/khs/' . $id_krs . '/download'; ?>">
+                        <span>
+                            <img class="button-icon" src="<?php echo base_url() . 'assets/images/download.png'; ?>"><span class="button-label">Download KHS</span>
+                        </span>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a class="high" href="<?php echo base_url() . 'doc/khs/' . $id_krs; ?>" target="_blank">
+                        <span>
+                            <img class="button-icon" src="<?php echo base_url() . 'assets/images/print.png'; ?>"><span class="button-label">Preview (Cetak) KHS</span>
+                        </span>
+                    </a>
+                <?php } else { ?>
+                    <a class="high" href="<?php echo base_url() . 'doc/kps/' . $id_krs . '/download'; ?>">
+                        <span>
+                            <img class="button-icon" src="<?php echo base_url() . 'assets/images/download.png'; ?>"><span class="button-label">Download KPS</span>
+                        </span>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a class="high" href="<?php echo base_url() . 'doc/kps/' . $id_krs; ?>" target="_blank">
+                        <span>
+                            <img class="button-icon" src="<?php echo base_url() . 'assets/images/print.png'; ?>"><span class="button-label">Preview (Cetak) KPS</span>
+                        </span>
+                    </a>
+                    &nbsp;&nbsp;
+                <?php } ?>
                 <?php if (!$krs_posted && ($level === 'A' || $level === 'D')) { ?>
                     <a class="high posting" href="<?php echo base_url() . 'krs/posting/' . $id_krs ?>">
                         <span>

@@ -3,15 +3,13 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of login
- *
- * @author Indra
+ * Login Controller
+ * 
+ * File: login.php
+ * 
+ * @package application/controllers
+ * @author Indra <indra@indragunawan.com>
  */
 class Login extends MY_Controller {
 
@@ -90,7 +88,7 @@ class Login extends MY_Controller {
 
     function check_captcha($captcha) {
         // First, delete old captchas
-        $expiration = time() - 60; // 1 minute limit
+        $expiration = time() - 120; // 2 minute limit
         $this->db->query("DELETE FROM captcha WHERE captcha_time < " . $expiration);
 
         // Then see if a captcha exists:

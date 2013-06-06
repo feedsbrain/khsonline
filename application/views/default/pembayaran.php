@@ -41,5 +41,7 @@
         </div>
     </div>    
     <div id="confirm-dialog"></div>  
-    <script type="text/javascript" src="<?php echo base_url() . 'assets/js/dialog.js'; ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url() . 'assets/js/dialog.js?v=' . $this->config->item('cjsuf'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url() . 'assets/grocery_crud/js/jquery_plugins/jquery.numeric.min.js?v=' . $this->config->item('cjsuf'); ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url() . 'assets/grocery_crud/js/jquery_plugins/config/jquery.numeric.config.js?v=' . $this->config->item('cjsuf'); ?>"></script>
 </div>

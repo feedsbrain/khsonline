@@ -3,15 +3,13 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of fakultas_model
- *
- * @author Indra
+ * Fakultas Model
+ * 
+ * File: fakultas_model.php
+ * 
+ * @package application/models
+ * @author Indra <indra@indragunawan.com>
  */
 class Fakultas_model extends MY_Model {
 

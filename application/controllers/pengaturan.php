@@ -3,20 +3,19 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of pengaturan
- *
- * @author Indra
+ * Pengaturan Controller
+ * 
+ * File: pengaturan.php
+ * 
+ * @package application/controllers
+ * @author Indra <indra@indragunawan.com>
  */
 class Pengaturan extends MY_Controller {
 
     protected $_title = 'Pengaturan Aplikasi';
     protected $_page_name = 'Pengaturan';
+    protected $_valid_access = array('A');
 
     function __construct() {
         // Call the Controller constructor

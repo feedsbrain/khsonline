@@ -3,19 +3,22 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of config_model
- *
- * @author Indra
+ * Config Model
+ * 
+ * File: config_model.php
+ * 
+ * @package application/models
+ * @author Indra <indra@indragunawan.com>
  */
 class Config_model extends MY_Model {
 
     protected $_table_name = "config";
+    
+    public $_SIG1TITLE = "SIG1TITLE";
+    public $_SIG1NAME = "SIG1NAME";
+    public $_SIG2TITLE = "SIG2TITLE";
+    public $_SIG2NAME = "SIG2NAME";
 
     function __construct() {
         // Call the Model constructor
@@ -40,14 +43,8 @@ class Config_model extends MY_Model {
     }
 
     public function get($key) {
-        $this->db->where('key', $key);
-        $this->db->select('value');
-        $query = $this->db->get($this->_table_name, 1);
-        if (!is_null($query)) {
-            return $query->value;
-        } else {
-            return null;
-        }
+        $config = (object) $this->db->get_where($this->_table_name, array('key' => $key), 1)->row();
+        return $config->value;
     }
 
 }

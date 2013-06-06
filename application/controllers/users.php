@@ -3,17 +3,17 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of users
- *
- * @author Indra
+ * Users Controller
+ * 
+ * File: users.php
+ * 
+ * @package application/controllers
+ * @author Indra <indra@indragunawan.com>
  */
 class Users extends MY_Controller {
+    
+    protected $_valid_access = array('A');
 
     function __construct() {
         // Call the Controller constructor

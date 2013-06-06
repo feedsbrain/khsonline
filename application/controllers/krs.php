@@ -3,15 +3,13 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of krs
- *
- * @author Indra
+ * Krs Controller
+ * 
+ * File: krs.php
+ * 
+ * @package application/controllers
+ * @author Indra <indra@indragunawan.com>
  */
 class Krs extends MY_Controller {
 
@@ -28,7 +26,10 @@ class Krs extends MY_Controller {
         $this->load->model('mahasiswa_model');
         $this->load->model('kelas_model');
         $this->load->model('krs_model');
+        $this->load->model('krsdetail_model');
         $this->load->model('matakuliah_model');
+        $this->load->model('transkrip_model');
+        $this->load->helper('form_helper');
     }
 
     function index($msg = null) {
@@ -108,9 +109,10 @@ class Krs extends MY_Controller {
             $crud->required_fields('krs', 'matakuliah');
 
             if ($krs->posted) {
-                $crud->columns('matakuliah', 'kode', 'sks', 'nilai', 'penilai', 'tanggal_dinilai');
+                $crud->columns('matakuliah', 'kode', 'sks', 'nilai', 'mutu', 'alpa', 'izin', 'sakit', 'penilai', 'tanggal_dinilai');
                 $crud->set_relation('penilai', 'users', 'name');
                 $crud->display_as('tanggal_dinilai', 'Tgl. Dinilai');
+                $crud->callback_column('tanggal_dinilai', array($this, 'valueDateTimeDisplay'));                                
             } else {
                 $crud->columns('matakuliah', 'kode', 'sks');
             }
@@ -122,25 +124,28 @@ class Krs extends MY_Controller {
 
             $crud->fields('krs', 'matakuliah');
             $crud->callback_column('nilai', array($this, 'valueToCenter'));
+            $crud->callback_column('alpa', array($this, 'valueToCenter'));
+            $crud->callback_column('izin', array($this, 'valueToCenter'));
+            $crud->callback_column('sakit', array($this, 'valueToCenter'));
 
             if ($level === 'A' || $level === 'D') {
                 if ($krs->posted) {
-                    $crud->fields('krs', 'nilai', 'penilai', 'tanggal_dinilai');
+                    $crud->fields('krs', 'nilai', 'alpa', 'izin', 'sakit', 'penilai', 'tanggal_dinilai');
                     $crud->field_type('penilai', 'hidden');
                     $crud->field_type('tanggal_dinilai', 'hidden');
                 }
                 $crud->callback_before_update(array($this, 'update_penilai_info'));
             } else {
-                // Level M
-                if ($krs->posted) {
-                    $crud->callback_column('nilai', array($this, 'valueNilaiToBobot'));
-                }
                 $crud->callback_after_update(array($this, 'update_krs_edit_info'));
+            }            
+            
+            if ($krs->posted) {
+                $crud->callback_column('nilai', array($this, 'valueNilaiToBobot'));
+                $crud->callback_column('mutu', array($this, 'get_mutu_calculation'));
             }
 
             $crud->display_as('matakuliah', 'Mata Kuliah');
-            $crud->set_relation('matakuliah', 'matakuliah', '{nama} (S:{semester})', 
-                    array('jurusan' => $kelas->jurusan, 'semester <=' => $krs->semester), 'nama');
+            $crud->set_relation('matakuliah', 'matakuliah', '{nama} (S:{semester})', array('jurusan' => $kelas->jurusan, 'semester <=' => $krs->semester), 'nama');
             $crud->change_field_type('krs', 'hidden', $id_krs);
             $crud->where('krsdetail.krs', $id_krs);
 
@@ -162,15 +167,22 @@ class Krs extends MY_Controller {
             $output->nim = $mahasiswa->nim;
             $output->level = $level;
             $output->jumlah_sks = $this->krs_model->get_jumlah_sks_krs($krs->id);
-            if ($krs->posted) {                
+            if ($krs->posted) {
                 $output->jumlah_mutu = $this->krs_model->get_jumlah_mutu_krs($krs->id);
                 $output->ips = number_format($this->krs_model->get_nilai_krs($krs->id), 2);
+                $output->ipk_sementara = number_format($this->transkrip_model->get_jumlah_ipk_semester($krs->semester, $krs->mahasiswa), 2);
             }
             $output->krs_posted = $krs->posted;
             $this->_page_output($output);
         } catch (Exception $e) {
             show_error($e->getMessage() . ' --- ' . $e->getTraceAsString());
         }
+    }
+    
+    public function get_mutu_calculation($value, $row) {
+        $matakuliah = $this->matakuliah_model->get_by_id($row->matakuliah)->row();
+        $krsdetail = $this->krsdetail_model->get_by_id($row->id)->row();
+        return $this->valueToCenter($matakuliah->kredit * bobot_mutu(nilai_bobot($krsdetail->nilai)), $row);
     }
 
     public function get_matakuliah_kode($value, $row) {

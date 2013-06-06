@@ -3,20 +3,19 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of jurusan
- *
- * @author Indra
+ * Jurusan Controller
+ * 
+ * File: jurusan.php
+ * 
+ * @package application/controllers
+ * @author Indra <indra@indragunawan.com>
  */
 class Jurusan extends MY_Controller {
 
     protected $_title = 'Manajemen Jurusan';
     protected $_page_name = 'Jurusan';
+    protected $_valid_access = array('A');
 
     function __construct() {
         // Call the Controller constructor

@@ -3,20 +3,19 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of spp
- *
- * @author Indra
+ * Spp Controller
+ * 
+ * File: spp.php
+ * 
+ * @package application/controllers
+ * @author Indra <indra@indragunawan.com>
  */
 class Spp extends MY_Controller {
 
     protected $_title = 'Manajemen SPP';
     protected $_page_name = 'SPP';
+    protected $_valid_access = array('A');
 
     function __construct() {
         // Call the Controller constructor
@@ -43,6 +42,9 @@ class Spp extends MY_Controller {
             $crud->field_type('posted', 'hidden');
             $crud->display_as('tahun', 'Tahun Ajaran');
             $crud->display_as('posted', 'Penetapan');
+            $crud->order_by('tahun', 'desc');
+            $crud->order_by('semester', 'desc');
+            $crud->order_by('nama', 'asc');
             $crud->add_action('Rincian', $this->config->base_url() . 'assets/images/rincian.png', 'spp/detail');
             $crud->add_action('Pembayaran', $this->config->base_url() . 'assets/images/pembayaran.png', 'pembayaran/index/spp');
 

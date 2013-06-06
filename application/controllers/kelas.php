@@ -3,20 +3,19 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- * Description of kelas
- *
- * @author Indra
+ * Kelas Controller
+ * 
+ * File: kelas.php
+ * 
+ * @package application/controllers
+ * @author Indra <indra@indragunawan.com>
  */
 class Kelas extends MY_Controller {
 
     protected $_title = 'Manajemen Kelas';
     protected $_page_name = 'Kelas';
+    protected $_valid_access = array('A');
 
     function __construct() {
         // Call the Controller constructor
