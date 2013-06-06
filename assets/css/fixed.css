@@ -1,0 +1,79 @@
+/* 
+    Document   : fix-css
+    Created on : 13 Apr 13, 1:42:59
+    Author     : Indra
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#container {
+    min-height: 400px;
+}
+
+#login-form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -15px;
+    margin-left: -84px;
+}
+
+#field-tahun, #field-semester, #field-kredit {
+    width: 50px;
+}
+
+#field-kode, #field-jumlah {
+    width: 100px;
+}
+
+.captcha-container {
+    padding: 0px 0px 0px 0px;
+    vertical-align: middle;
+}
+
+.captcha-container img {
+    position: absolute;
+    margin-left: 10px;
+}
+
+.number-display {
+    width: 100%;
+    padding: 0px 2px 0px 2px;
+    margin: 0px 0px 0px 0px;
+    text-align: right;
+}
+
+.button-container {
+    width: 100%;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.button-container .button-icon {
+    position: absolute;
+    padding-right: 5px;
+    padding-top: 2px;
+}
+
+.button-container .button-label {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.button-container .right-container {
+    float: right;
+    text-align: right;
+    width: 50%;
+}
+
+.button-container .left-container {
+    float: left;
+    text-align: left;
+    width: 50%;
+}
+
+.transkrip-tabel {
+    width: 100%;       
+}
+
+
